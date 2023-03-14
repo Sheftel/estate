@@ -36,3 +36,6 @@ class Property(Model):
         max_length=15)
     price = DecimalField(max_digits=8, decimal_places=0)
     description = TextField(blank=True)
+
+    class Meta:
+        verbose_name_plural = _('Properties')

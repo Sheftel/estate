@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Owner(Model):
+
     name = CharField(max_length=75)
     phone = CharField(
         validators=[
@@ -15,7 +16,10 @@ class Owner(Model):
     email = EmailField(blank=False, max_length=255, unique=True)
     type = CharField(
         choices=[
-            ('AG', _('Agency')),
-            ('PR', _('Private'))
+            ('agency', _('Agency')),
+            ('private', _('Private'))
         ],
         max_length=255)
+
+    def __str__(self):
+        return f"{self.type} owner {self.name}"
