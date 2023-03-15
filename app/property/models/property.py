@@ -20,7 +20,7 @@ class Property(Model):
             ('apartments', _('Apartments'))
         ],
         max_length=15)
-    area = DecimalField(max_digits=7, decimal_places=3)
+    area = DecimalField(max_digits=5, decimal_places=1)
     room_count = IntegerField(default=1)
     floor = IntegerField(
         default=1,

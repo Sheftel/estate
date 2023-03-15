@@ -1,8 +1,11 @@
 from django.urls import include, path
 
+from .views import PropertyListView, PropertyDetailView
+
+app_name = 'property'
+
 
 urlpatterns = [
-    # TODO: make detail and list views
-    # path('property/', include('property.urls')),
-    # path('property/', include('property.urls'))
+    path('', PropertyListView.as_view(), name='list'),
+    path('<int:pk>/', PropertyDetailView.as_view(), name='detail')
 ]

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Подобранные квартиры</h1>
+{% if property_list %}
+    <table border="1" bordercolor="grey">
+        {% for property in property_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'property:detail' property.id %}">{{ property.category }} {{ property.address }} {{property.area}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</body>
+</html>
