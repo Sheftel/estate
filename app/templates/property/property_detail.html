@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>{{ property.category }} {{property.area}} {{property.price}}</h1>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
 {% load static %}
 <html lang="ru">
 <head>
@@ -32,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="light">
         <div class="container-fluid w-75">
             <a class="navbar-brand text-light" href="{% url 'index'%}">
-                <img src="images/logo-wh.svg" alt="" width="50" class="d-inline-block">
+                <img src="{% static 'images/logo-wh.svg' %}" alt="" width="50" class="d-inline-block">
                 AgencyForDummies
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -80,13 +67,7 @@
             </div>
             <div class="row mt-5">
                 <h5>Описание</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam congue nisi id sodales ultricies. Sed
-                    commodo lectus quis tincidunt dignissim. Donec malesuada ligula metus, ut pharetra magna scelerisque
-                    in. Nam imperdiet erat justo, sit amet maximus lectus rhoncus vitae. Nulla lobortis ex magna, sit
-                    amet aliquet metus suscipit non. Maecenas orci lacus, tincidunt ut venenatis non, viverra nec risus.
-                    Mauris pharetra at lectus nec dignissim. Integer ex eros, blandit ac laoreet id, vulputate eu
-                    mauris. Pellentesque viverra massa in ante iaculis sodales. Vestibulum purus elit, consequat nec
-                    odio in, pellentesque semper arcu.</p>
+                <p>{{property.description}}</p>
             </div>
 
         </div>

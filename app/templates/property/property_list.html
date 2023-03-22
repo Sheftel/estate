@@ -62,14 +62,14 @@
                 <div class="card" style="width: 16rem;">
                     <img src="{% static 'images/default.png' %}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Квартира, {{ forloop.counter }}</h5>
+                        <h5 class="card-title">Квартира, {{property.area}}м</h5>
                         <p class="card-text">{{ property.category }}, {{property.area}} кв.м., {{ property.address }}</p>
                         <div class="row">
                             <div class="col">
                                 <a href="{% url 'property:detail' property.id %}" class="btn btn-primary my-0 mx-0">Глянуть</a>
                             </div>
                             <div class="col">
-                                <h5 class="card-text">{property.price} ₽</h5>
+                                <h5 class="card-text">{{property.price}} ₽</h5>
                             </div>
                         </div>
                     </div>
