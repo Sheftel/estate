@@ -1,21 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>AFD</title>
 </head>
 <body>
-<h1>Подобранные квартиры</h1>
-{% if property_list %}
-    <table border="1" bordercolor="grey">
-        {% for property in property_list %}
-            <tr>
-                <td>
-                    <a href="{% url 'property:detail' property.id %}">{{ property.category }} {{ property.address }} {{property.area}}</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-{% endif %}
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="light">
+        <div class="container-fluid w-75">
+            <a class="navbar-brand text-light" href="{% url 'index'%}">
+                <img src="{% static 'images/logo-wh.svg' %}" alt="" width="50" class="d-inline-block">
+                AgencyForDummies
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                    <a class="nav-link active text-light" aria-current="page" href="#">Подборка</a>
+                    <a class="nav-link text-light" href="questions.html">Изменить анкету</a>
+                    <div class="dropdown">
+                        <a class="nav-link text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Сортировка
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">По умолчанию</a></li>
+                            <li><a class="dropdown-item" href="#">Сначала подороже</a></li>
+                            <li><a class="dropdown-item" href="#">Сначала подешевле</a></li>
+                            <li><a class="dropdown-item" href="#">Сначала побольше</a></li>
+                            <li><a class="dropdown-item" href="#">Сначала поменьше</a></li>
+                        </ul>
+                    </div>
+                    <a class="nav-link disabled">Избранные</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container w-75 my-5">
+        {% if property_list %}
+            <div class="row my-3">
+            {% for property in property_list %}
+                <tr>
+                    <td>
+                        <a href=""></a>
+                    </td>
+                </tr>
+
+                <div class="col-3">
+                <div class="card" style="width: 16rem;">
+                    <img src="{% static 'images/default.png' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Квартира, {{ forloop.counter }}</h5>
+                        <p class="card-text">{{ property.category }}, {{property.area}} кв.м., {{ property.address }}</p>
+                        <div class="row">
+                            <div class="col">
+                                <a href="{% url 'property:detail' property.id %}" class="btn btn-primary my-0 mx-0">Глянуть</a>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-text">{property.price} ₽</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+     </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
 </body>
 </html>

@@ -16,6 +16,13 @@ class User(AbstractUser):
         max_length=17, null=True, blank=True)
     email = EmailField(blank=False, max_length=255, unique=True)
 
+    username = None  # type: ignore
+    first_name = None  # type: ignore
+    last_name = None  # type: ignore
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name', 'password']
+
 
 class Client(Model):
     user = OneToOneField(User, on_delete=CASCADE, related_name='client')
