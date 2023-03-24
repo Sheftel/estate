@@ -1,0 +1,18 @@
+{% load static %}
+<div>
+    <nav class="navbar navbar-dark bg-primary">
+            <div class="container-fluid w-75">
+                <a class="navbar-brand" href="{% url 'index'%}">
+                    <img src="{% static 'images/logo-wh.svg' %}" alt="" width="50" class="d-inline-block">
+                    AgencyForDummies
+                </a>
+            </div>
+            <div class="header-right">
+                {% if user.is_authenticated %}
+                    <a class="header-auth" href="{% url 'users:signout' %}">Выйти из системы</a>
+                {% else %}
+                    <a class="header-auth" href="{% url 'users:signin' %}">Войти в систему</a>
+                {% endif %}
+            </div>
+    </nav>
+</div>

@@ -13,22 +13,19 @@
     <title>AFD</title>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-dark bg-primary">
-        <div class="container-fluid w-75">
-            <a class="navbar-brand" href="index.html">
-                <img src="{% static 'images/logo-wh.svg' %}" alt="" width="50" class="d-inline-block">
-                AgencyForDummies
-            </a>
-        </div>
-    </nav>
+<header  class="header">
+   {% include 'parts/header.html' %}
 </header>
 <div class="container-fluid w-75 my-5 py-5 text-center">
     <h3>Добро пожаловать в AFD, ваш личный консультант по недвижимости</h3>
     <p>Перед тем, как мы начнем, ответьте, пожалуйста на несколько вопросов</p>
 </div>
 <div class="text-center">
-    <a class="btn btn-outline-primary btn-lg text-center" href="{% url 'property:list'%}" role="button">Начать поиск</a>
+    {% if user.is_authenticated %}
+        <a class="btn btn-outline-primary btn-lg text-center" href="{% url 'property:list'%}" role="button">Начать поиск</a>
+    {% else %}
+        <a class="btn btn-outline-primary btn-lg text-center" href="{% url 'users:signup'%}" role="button">Зарегистрироваться</a>
+    {% endif %}
 </div>
 
 <img src= "{% static 'images/search-illustration.svg' %}" class="w-25 d-block mx-auto my-5">

@@ -6,7 +6,7 @@ app_name = 'property'
 
 
 urlpatterns = [
-    path('signin/', SignInView.as_view(), name='signin'),
+    path('signin/', SignInView.as_view(template_name='users/login.html'), name='signin'),
     path('signout/', SignOutView.as_view(), name='signout'),
     path('signup/', SignUpView.as_view(), name='signup')
 ]
