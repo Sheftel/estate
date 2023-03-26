@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="light">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="light">
         <div class="container-fluid w-75">
             <a class="navbar-brand text-light" href="{% url 'index'%}">
                 <img src="{% static 'images/logo-wh.svg' %}" alt="" width="50" class="d-inline-block">
@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ">
                     <a class="nav-link active text-light" aria-current="page" href="#">Подборка</a>
-                    <a class="nav-link text-light" href="questions.html">Изменить анкету</a>
+                    <a class="nav-link text-light" href="{% url 'users:questions' %}">Изменить анкету</a>
                     <div class="dropdown">
                         <a class="nav-link text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                             Сортировка
@@ -52,29 +52,23 @@
         {% if property_list %}
             <div class="row my-3">
             {% for property in property_list %}
-                <tr>
-                    <td>
-                        <a href=""></a>
-                    </td>
-                </tr>
-
                 <div class="col-3">
-                <div class="card" style="width: 16rem;">
-                    <img src="{% static 'images/default.png' %}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Квартира, {{property.area}}м</h5>
-                        <p class="card-text">{{ property.category }}, {{property.area}} кв.м., {{ property.address }}</p>
-                        <div class="row">
-                            <div class="col">
-                                <a href="{% url 'property:detail' property.id %}" class="btn btn-primary my-0 mx-0">Глянуть</a>
-                            </div>
-                            <div class="col">
-                                <h5 class="card-text">{{property.price}} ₽</h5>
+                    <div class="card" style="width: 16rem;">
+                        <img src="{% static 'images/default.png' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Квартира, {{property.area}}м</h5>
+                            <p class="card-text">{{ property.category }}, {{property.area}} кв.м., {{ property.address }}</p>
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{% url 'property:detail' property.id %}" class="btn btn-primary my-0 mx-0">Глянуть</a>
+                                </div>
+                                <div class="col">
+                                    <h5 class="card-text">{{property.price}} ₽</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
             </div>
         {% endif %}

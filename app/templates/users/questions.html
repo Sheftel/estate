@@ -27,75 +27,28 @@
 
 <main>
     <div class="container my-5 d-flex w-75">
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Как Ваше Имя?</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1">*</span>
-                    <input type="text" class="form-control" id="name" aria-describedby="basic-addon1">
-                </div>
-            </div>
+        <form method="post" action="{% url 'users:questions' %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.age.label_tag }}</td>
+                    <td>{{ form.age }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.sex.label_tag }}</td>
+                    <td>{{ form.sex }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.partner.label_tag }}</td>
+                    <td>{{ form.partner }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.kids.label_tag }}</td>
+                    <td>{{ form.kids }}</td>
+                </tr>
+            </table>
 
-            <div class="mb-3">
-                <label for="age" class="form-label">Сколько Вам лет?</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2">*</span>
-                    <input type="text" class="form-control" id="age" aria-describedby="basic-addon2">
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" name="sex">Какого Вы пола?</label> <br>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="sex" id="male">
-                    <label class="form-check-label" for="male">
-                        Мужской
-                    </label>
-                    <input class="form-check-input" type="radio" name="sex" id="female" checked>
-                    <label class="form-check-label" for="female">
-                        Женский
-                    </label>
-                </div>
-
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" name="pare">Есть ли у вас партнер?</label> <br>
-                <input class="form-check-input" type="radio" name="pare" id="yespare">
-                <label class="form-check-label" for="yespare">
-                    Да
-                </label>
-                <input class="form-check-input" type="radio" name="pare" id="nopare" checked>
-                <label class="form-check-label" for="nopare">
-                    Нет
-                </label>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" name="kids">Есть ли у вас дети?</label> <br>
-                <input class="form-check-input" type="radio" name="kids" id="yeskids">
-                <label class="form-check-label" for="yeskids">
-                    Да
-                </label>
-                <input class="form-check-input" type="radio" name="kids" id="nokids" checked>
-                <label class="form-check-label" for="nokids">
-                    Нет
-                </label>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Какой ценовой диапазон?</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="basic-addon3">От</span>
-                    <input type="text" placeholder="10000" class="form-control" id="minPrice"
-                           aria-describedby="basic-addon3">
-                    <span class="input-group-text" id="basic-addon4">До</span>
-                    <input type="text" placeholder="45000" class="form-control" id="maxPrice"
-                           aria-describedby="basic-addon4">
-                </div>
-            </div>
-
-            <a class="btn btn-outline-primary text-center" href="{% url 'users:signin'%}" role="submit">Готово</a>
+            <input type="submit" value="questions">
         </form>
 
     </div>
