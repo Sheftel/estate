@@ -1,8 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.db.models import Model, CharField, EmailField, IntegerField, BooleanField, OneToOneField, \
-    CASCADE, PositiveIntegerField
+    CASCADE, PositiveIntegerField, ManyToManyField
 from django.utils.translation import gettext_lazy as _
+
+from property.models import Property
 
 
 class User(AbstractUser):
@@ -39,3 +41,5 @@ class Client(Model):
             ('private', _('Private'))
         ],
         max_length=255)
+
+    favourites = ManyToManyField(Property)
